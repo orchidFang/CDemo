@@ -15,23 +15,23 @@ char *strrstr(const char *s1, const char *s2)
         return NULL;
     }
     
-    char *p = NULL;
+    char *current = NULL;
+    //last 为上一次在s1中匹配s2的指针位置
     char *last = NULL;
-    size_t searchStrLength = strlen(s2);
     
-    p = strstr(s1, s2);
+    current = strstr(s1, s2);
     
-    while (p != NULL) {
-        last = p;
-        p = strstr(last + searchStrLength, s2);
+    while (current != NULL) {
+        last = current;
+        current = strstr(last + 1, s2);
     }
     
     return last;
 }
 
 int main(int argc, const char * argv[]) {
-    char *a = "hello,world! my world,hi";
-    char *b = "world";
+    char *a = "hello,sss! my ss,hi";
+    char *b = "ss";
 
     char *p = strrstr(a, b);
     for (; *p != '\0'; p++) {
